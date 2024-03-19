@@ -22,6 +22,7 @@
     "three": "^0.158.0",
     "three-custom-shader-material": "^5.4.0",
     "troika-three-utils": "^0.49.0",
+    "vercel": "^33.6.1",
     "vite-plugin-glsl": "^1.2.1"
   }
 }

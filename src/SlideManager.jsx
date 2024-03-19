@@ -2,15 +2,18 @@ import { useFrame, useThree } from "@react-three/fiber";
 import NetjetsSlide from "./Slides/NetjetsSlide";
 import SpotifriendSlide from "./Slides/SpotifriendSlide";
 import MarioSlide from "./Slides/MarioSlide";
+import RhythmSlide from "./Slides/RhythmSlide";
 import React, { useRef } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import * as THREE from 'three'
 
 export default function SlideManager() {
 
+    const [currentSlide, setCurrentSlide] = useState(0)
 
     let cooldown = false
+
     const slide = (direction) => {
 
         if(circleRef.current) {
@@ -20,38 +23,43 @@ export default function SlideManager() {
             cooldown = true
             // Animate and rotate the circle of slides to the next position
             gsap.to(circleRef.current.rotation, {
-                y: circleRef.current.rotation.y + (Math.PI * 0.5 * direction),
-                duration: 1
+                y: circleRef.current.rotation.y + (Math.PI * (2 / slides.length) * direction),
+                duration: 1,
+                ease: 'power2.inOut'
             }).then(() => {
                 cooldown = false
             })
 
-            const index = Math.abs(currentSlide + direction) % slides.length
+
+            let index = (currentSlide + direction) % slides.length
+            if(index == -1) index = slides.length - 1
 
             gsap.to(backgroundRef.current, {
                 r: slides[index].background.r,
                 g: slides[index].background.g,
                 b: slides[index].background.b,
-                duration: 1
+                duration: 1,
+                ease: 'power2.inOut',
+            }).then(() => {
+                setCurrentSlide(index)
             })
 
-            currentSlide = index
         }
     }
 
-    let currentSlide = 0;
+
     const slides = [
         {
-            name: 'Netjets',
+            name: 'netjets',
             ref: useRef(),
             background: {
-                r: 13 / 255,
-                g: 33 / 255,
-                b: 38 / 255 
+                r: 0 / 255,
+                g: 60 / 255,
+                b: 60 / 255 
             }
         },
         {
-            name: 'Spotifriend',
+            name: 'spotifriend',
             ref: useRef(),
             background: {
                 r: 0 / 255,
@@ -60,21 +68,21 @@ export default function SlideManager() {
             }
         },
         {
-            name: 'Mario',
+            name: 'mario',
             ref: useRef(),
             background: {
                 r: 255 / 255,
-                g: 32 / 255,
-                b: 22 / 255 
+                g: 10 / 255,
+                b: 10 / 255 
             }
         },
         {
-            name: 'Spotifriend',
+            name: 'rhythm',
             ref: useRef(),
             background: {
-                r: 0 / 255,
-                g: 100 / 255,
-                b: 10 / 255
+                r: 127 / 255,
+                g: 0 / 255,
+                b: 255 / 255
             }
         },
     ]
@@ -91,27 +99,41 @@ export default function SlideManager() {
         camera.lookAt(1, 0, 0)
 
         slides.forEach((slide, index) => {
-            slide.ref.current.position.x = Math.cos(((index / slides.length) * Math.PI * 2)) * 5
-            slide.ref.current.position.z = Math.sin((index / slides.length) * Math.PI * 2) * 5
+            slide.ref.current.position.x = Math.cos(((index / slides.length) * Math.PI * 2)) * 6
+            slide.ref.current.position.z = Math.sin((index / slides.length) * Math.PI * 2) * 6
 
-            //Rotate to face center'
             slide.ref.current.lookAt(0, 0, 0)
         })
     }, [])
 
-    const rightButton = document.querySelector('.next')
-    rightButton.addEventListener('click', () => slide(1))
+    useEffect(() => {
 
-    const leftButton = document.querySelector('.previous')
-    leftButton.addEventListener('click', () => slide(-1))
+        const rightButton = document.querySelector('.next')
+        rightButton.addEventListener('click', () => slide(1))
+
+        const leftButton = document.querySelector('.previous')
+        leftButton.addEventListener('click', () => slide(-1))
+
+
+        return () => {
+            rightButton.removeEventListener('click', () => slide(1))
+            leftButton.removeEventListener('click', () => slide(-1))
+        }
+
+    }, [currentSlide])
+
+    useEffect(() => {
+
+
+    }, [])
 
     return <>
         <color ref={backgroundRef} attach="background" args={[bg.r, bg.g, bg.b]}/>
         <group ref={circleRef}>
-            <NetjetsSlide groupRef={slides[0].ref} />
+            <NetjetsSlide groupRef={slides[0].ref}/>
             <SpotifriendSlide groupRef={slides[1].ref}/> 
             <MarioSlide groupRef={slides[2].ref} />
-            <SpotifriendSlide groupRef={slides[3].ref}/> 
+            <RhythmSlide groupRef={slides[3].ref}/> 
         </group>
     </>
 }

@@ -1,5 +1,5 @@
 import { useControls } from 'leva'
-import { Text, Float } from '@react-three/drei'
+import { Text, Float, Html } from '@react-three/drei'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import { useLoader} from '@react-three/fiber'
@@ -7,13 +7,14 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import NetjetsShaderMaterial from './NetjetsShaderMaterial'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import TextShaderMaterial from '../TextShader'
+import divStyle from './divStyle'
 
 export default function NetjetsSlide({position, rotation, scale, groupRef}) {
 
     const privateJetGeometry = useLoader(GLTFLoader, 'models/BusinessJet.glb').scene.children[0].geometry
     const pjRef = useRef()
 
-    const sphereControls = useControls('Sphere', {
+    const sphereControls = useControls('Netjets Sphere', {
             position: {
                 value: [0, 0, -1],
                 step: 0.1
@@ -27,7 +28,7 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
                 step: 0.1
             },
             detail: {
-                value: 100,
+                value: 50,
                 min: 0,
                 max: 500,
                 step: 1
@@ -87,22 +88,33 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
 
 
     const textRef = useRef()
+    const divRef = useRef()
 
    const [entered, setEntered] = useState(false);
 
+   let transform = entered ? 'translate(-50%, -50%)' : 'translate(-50%, -180%)'
     useEffect(() => {
+
         const Enter = () => {
+
+            gsap.killTweensOf([sphereRef.current.scale, textRef.current.position, pjRef.current.rotation, pjRef.current.position]);
+
             gsap.to(sphereRef.current.scale, { x: 3, y: 3, z: 1, duration: 2, ease: 'elastic.inOut' })
             gsap.to(textRef.current.position, { y: -3, duration: 2, ease: 'elastic.inOut' })
             gsap.to(pjRef.current.rotation, { y: Math.PI * 1.2, duration: 2 })
             gsap.to(pjRef.current.position, { x: 6, y: 2, z: -0.5, duration: 1, ease: 'power2.in' })
+
         };
 
         const Exit = () => {
+            gsap.killTweensOf([sphereRef.current.scale, textRef.current.position, pjRef.current.rotation, pjRef.current.position]);
+
             gsap.to(sphereRef.current.scale, { x: 1, y: 1, z: 1, duration: 2, ease: 'elastic.inOut' });
             gsap.to(textRef.current.position, { y: 0, duration: 2, ease: 'elastic.inOut' });
+
             gsap.to(pjRef.current.rotation, { y: Math.PI, duration: 2 });
-            gsap.to(pjRef.current.position, { x: 0.7, y: 1, z: 0.5, duration: 1, delay: 1, ease: 'power4.out' });
+            gsap.to(pjRef.current.position, { x: 0.7, y: 1, z: 0.5, duration: 1, delay: 1, ease: 'power2.out' });
+
         };
 
         const toggleEntry = () => {
@@ -156,6 +168,11 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
             >
                 NETJETS
             </Text>
+            <Html ref={divRef} position={[0, 0, 0]}>
+                <div style={divStyle(transform)}>
+                    This is  a div
+                </div>
+            </Html>
         </group>
     </>
 }
