@@ -6,7 +6,7 @@ export default function divStyle(transform) {
         top: '45%',
         left: '50%',
         width: '80vw',
-        height: '80vh',
+        height: '70vh',
         transform: transform,
         background: 'rgba(255, 255, 255, 0.03)',
         borderRadius: '16px',

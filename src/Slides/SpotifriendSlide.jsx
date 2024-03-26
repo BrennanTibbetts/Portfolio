@@ -49,7 +49,7 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
 
    const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -50%)' : 'translate(-50%, -180%)'
+   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -180%)'
     useEffect(() => {
         const Enter = () => {
             gsap.to(sphereRef.current.scale, { x: 3, y: 3, z: 1, duration: 2, ease: 'elastic.inOut' });
@@ -115,7 +115,7 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
             </Float>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div style={divStyle(transform)}>
-                    This is  a div
+                    This Project Is Still In Development
                 </div>
             </Html>
         </group>

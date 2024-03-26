@@ -46,7 +46,7 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
 
     const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -50%)' : 'translate(-50%, -180%)'
+   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -185%)'
     useEffect(() => {
         const Enter = () => {
             gsap.to(sphereRef.current.scale, { x: 5, y: 5, z: 1, duration: 2, ease: 'elastic.inOut' });
@@ -91,6 +91,7 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
                 position={textControls.position}
                 scale={0.4}
                 letterSpacing={0.3}
+
                 // curveRadius={2}
             >
                 MARIO
@@ -100,9 +101,37 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
                 <MarioShaderMaterial/>
             </mesh>
             <Html ref={divRef} position={[0, 0, 0]}>
-                <div style={divStyle(transform)}>
-                    This is  a div
-                </div>
+                <div className="glass" style={divStyle(transform)}>
+                    <div className="git">
+                        <img src="/css/mario.gif"/>
+                        <a className="github" href="https://github.com/BrennanTibbetts/MarioRemake" target="_blank">
+                            <img src="/css/github.png"/>
+                            Check Out the Source Code
+                        </a> 
+                    </div>
+                    <div className='content'>
+                        <h1>Mario Remake</h1>
+                        <h1>Recreated the first level of the original Super Mario Bros. (1985)</h1>
+                        <h2>C#, .NET, MonoGame, XNAFramework, Photoshop</h2>
+                        <h2>Features: </h2>
+                        <ul>
+                            <li>Collision Detection Algorithms</li>
+                            <li>Game Physics</li>
+                            <li>Pixel Art</li>
+                            <li>Sprite Animation</li>
+                            <li>Sound Effects</li>
+                            <li>Game State Management</li>
+                        </ul>
+                        <h2>Details:</h2>
+                        <ul>
+                            <li>Collaborated in a team of 4 over a 10-week period.</li>
+                            <li>Simulated industry workflow with Agile Methodologies.</li>
+                            <li>Studied and Implemented Design Patterns of OOP.</li>
+                            <li>Made entirely from scratch, including the physics, collision, state handling, parallax, animations,
+                                and more.</li>
+                        </ul>
+                    </div>
+               </div>
             </Html>
         </group>
     </>

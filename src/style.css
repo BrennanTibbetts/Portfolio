@@ -119,12 +119,76 @@ div.slide {
     transform: translate(-50%, -50%);
 }
 
-/* 
-@keyframes slide {
-    0% {
-        transform: translate(-50%, -160%);
+div.glass {
+    display: flex;
+    padding: 20px;
+    gap: 50px;
+    overflow: auto;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+}
+
+div.git {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+    flex-grow: 1;
+}
+
+div.git img{
+    border-radius: 16px;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    div.glass {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
     }
-    100% {
-        transform: translate(-50%, -50%);
+
+    div.git {
+        width: 100%;
     }
-} */
+    
+}
+
+
+a.github {
+
+    border-radius: 15px;
+    background-color: white;
+    height: 7vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a.github img {
+    height: 70%;
+    width: auto;
+    border-radius: 15px;
+}
+
+div.content {
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.224);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.224);
+}

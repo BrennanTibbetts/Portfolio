@@ -46,7 +46,7 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
 
    const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -50%)' : 'translate(-50%, -180%)'
+   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -180%)'
     useEffect(() => {
         const Enter = () => {
             gsap.to(sphereRef.current.scale, { x: 3, y: 3, z: 1, duration: 2, ease: 'elastic.inOut' });
@@ -102,8 +102,33 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
                Rhythm 
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
-                <div style={divStyle(transform)}>
-                    This is  a div
+                <div className='glass' style={divStyle(transform)}>
+                    <div className="git">
+                        <img src="/css/rhythm.gif"/>
+                        <a className="github" href="https://github.com/BrennanTibbetts/RhythmGame" target="_blank">
+                            <img src="/css/github.png"/>
+                            Check Out the Source Code
+                        </a> 
+                    </div>
+                    <div className='content'>
+                        <h1>Rhythm</h1>
+                        <h1>A Rhythm-Based Music Game With MP3 to Track Conversion</h1>
+                        <h2>FX Shaders, C#, .NET, MonoGame, XNAFramework, Photoshop</h2>
+                        <h2>Features: </h2>
+                        <ul>
+                            <li>Bloom Shader</li>
+                            <li>Audio Latency System</li>
+                            <li>Pixel Art</li>
+                            <li>Sprite Animation</li>
+                            <li>Game State Management</li>
+                            <li>Score Management</li>
+                        </ul>
+                        <h2>Details:</h2>
+                        <ul>
+                            <li>Converts MP3 files to playable tracks, by mapping sounds to different note types.</li>
+                            <li>Created as a final project for a game development course at Ohio State University</li>
+                        </ul>
+                    </div>
                 </div>
             </Html>
         </group>

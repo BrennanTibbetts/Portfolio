@@ -92,7 +92,7 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
 
    const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -50%)' : 'translate(-50%, -180%)'
+   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -180%)'
     useEffect(() => {
 
         const Enter = () => {
@@ -169,8 +169,33 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
                 NETJETS
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
-                <div style={divStyle(transform)}>
-                    This is  a div
+                <div className='glass' style={divStyle(transform)}>
+                    <div className='content'>
+                        <h1>Netjets Tail Sorting System Fullstack Internship</h1>
+                        <h2>Technologies: </h2>
+                        <ul>
+                            <li>React.js</li>
+                            <li>OAuth 2.0</li>
+                            <li>Node.js</li>
+                            <li>Express.js</li>
+                            <li>GraphQL</li>
+                        </ul>
+                        <h2>Developed a Single-Page-Web-App using React.js, now used frequently within the company.</h2>
+                        <h2>Managed backend data retrieval and organization for vast datasets.</h2>
+                        <h2>Collaborated in an experienced Scrum team with daily accountability.</h2>
+                        <h2>Engaged in career workshops, personality assessments,
+                            and received invaluable one-on-one
+                            mentorship from company leaders.</h2>
+                    </div>
+                    <div className='git'>
+                        <img src="/css/netjets.png" />
+                        <h3>
+                            This internship profoundly impacted my professional growth and skill development.
+                            Spearheading the development of an application expanded my technical
+                            expertise, while collaboration within a Scrum team enhanced my teamwork and project management
+                            abilities.</h3>
+                        <img src="/css/tail.gif" />
+                    </div>
                 </div>
             </Html>
         </group>
