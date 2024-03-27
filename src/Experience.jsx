@@ -6,7 +6,7 @@
 
 import { Perf } from 'r3f-perf'
 import { Environment } from '@react-three/drei'
-import { useControls, Leva } from 'leva'
+import { useControls } from 'leva'
 import SlideManager from './SlideManager.jsx'
 
 export default function Experience()
