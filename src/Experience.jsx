@@ -8,6 +8,7 @@ import { Perf } from 'r3f-perf'
 import { Environment } from '@react-three/drei'
 import { useControls } from 'leva'
 import SlideManager from './SlideManager.jsx'
+import { int } from 'three/examples/jsm/nodes/shadernode/ShaderNode.js'
 
 export default function Experience()
 {
@@ -24,8 +25,7 @@ export default function Experience()
         intensity: {
             value: 2,
             min: 0,
-            max: 2,
-            step: 0.1
+            max: 2, step: 0.1
         }
     })
 

@@ -141,11 +141,12 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
                 color={'black'}
                 fontWeight={900}
                 ref={textRef}
+                letterSpacing={0.1}
                 position={textControls.position}
-                scale={0.6}
+                scale={0.4}
                 maxWidth={1}
             >
-                Brennan Tibbetts
+                BRENNAN TIBBETTS
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>

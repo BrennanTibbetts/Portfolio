@@ -16,6 +16,12 @@ body
     padding: 0;
     overflow-x: hidden;
     user-select: none;
+    background-color: black;
+}
+
+canvas
+{
+    background-color: black;
 }
 
 div#links{
