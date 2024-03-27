@@ -50,7 +50,7 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
             step: 0.1
         },
         positionIntro: {
-            value: [-2, 1.4, 0],
+            value: [0, 1.0, 1],
             step: 0.1
         },
     })
@@ -127,23 +127,25 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
                 <AboutMeShaderMaterial />
             </mesh>
             <Text
-                font='./drei/Netjets.ttf'
-                color={'white'}
+                font='./drei/Montserrat-Light.ttf'
+                color={'black'}
                 ref={textIntroRef}
                 position={textControls.positionIntro}
-                scale={0.3}
-                maxWidth={1}
+                scale={0.15}
+                maxWidth={10}
             >
-                Hi, I'm
+                HI, I'M
             </Text>
             <Text 
-                font='./drei/Century.otf'
+                font='./drei/Montserrat-Bold.ttf'
                 color={'black'}
-                fontWeight={900}
                 ref={textRef}
+                fontWeight={100}
+                fontStyle='Bold'
                 letterSpacing={0.1}
+                lineHeight={1.0}
                 position={textControls.position}
-                scale={0.4}
+                scale={0.3}
                 maxWidth={1}
             >
                 BRENNAN TIBBETTS

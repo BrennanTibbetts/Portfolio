@@ -63,18 +63,18 @@ export default function SlideManager() {
             name: 'netjets',
             ref: useRef(),
             background: {
-                r: 0 / 255,
-                g: 60 / 255,
-                b: 60 / 255 
+                r: 20 / 255,
+                g: 80 / 255,
+                b: 80 / 255 
             }
         },
         {
             name: 'spotifriend',
             ref: useRef(),
             background: {
-                r: 0 / 255,
-                g: 100 / 255,
-                b: 10 / 255
+                r: 20 / 255,
+                g: 120 / 255,
+                b: 30 / 255
             }
         },
         {
@@ -82,16 +82,16 @@ export default function SlideManager() {
             ref: useRef(),
             background: {
                 r: 255 / 255,
-                g: 10 / 255,
-                b: 10 / 255 
+                g: 40 / 255,
+                b: 40 / 255 
             }
         },
         {
             name: 'rhythm',
             ref: useRef(),
             background: {
-                r: 127 / 255,
-                g: 0 / 255,
+                r: 157 / 255,
+                g: 30 / 255,
                 b: 255 / 255
             }
         },
