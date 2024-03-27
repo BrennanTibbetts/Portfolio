@@ -5,6 +5,7 @@ import Experience from './Experience.jsx'
 import Links from './Links.jsx'
 import Interaction from './Interaction.jsx'
 import CameraShift from './CameraShift.jsx'
+import { Leva } from 'leva'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 

@@ -3,6 +3,7 @@ import NetjetsSlide from "./Slides/NetjetsSlide";
 import SpotifriendSlide from "./Slides/SpotifriendSlide";
 import MarioSlide from "./Slides/MarioSlide";
 import RhythmSlide from "./Slides/RhythmSlide";
+import AboutMeSlide from "./Slides/AboutMeSlide";
 import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
@@ -50,6 +51,15 @@ export default function SlideManager() {
 
     const slides = [
         {
+            name: 'aboutme',
+            ref: useRef(),
+            background: {
+                r: 0 / 255,
+                g: 0 / 255,
+                b: 0 / 255
+            }
+        },
+        {
             name: 'netjets',
             ref: useRef(),
             background: {
@@ -85,6 +95,7 @@ export default function SlideManager() {
                 b: 255 / 255
             }
         },
+
     ]
     const circleRef = useRef()  
     const backgroundRef = useRef()
@@ -130,10 +141,11 @@ export default function SlideManager() {
     return <>
         <color ref={backgroundRef} attach="background" args={[bg.r, bg.g, bg.b]}/>
         <group ref={circleRef}>
-            <NetjetsSlide groupRef={slides[0].ref}/>
-            <SpotifriendSlide groupRef={slides[1].ref}/> 
-            <MarioSlide groupRef={slides[2].ref} />
-            <RhythmSlide groupRef={slides[3].ref}/> 
+            <AboutMeSlide groupRef={slides[0].ref}/>
+            <NetjetsSlide groupRef={slides[1].ref}/>
+            <SpotifriendSlide groupRef={slides[2].ref}/> 
+            <MarioSlide groupRef={slides[3].ref} />
+            <RhythmSlide groupRef={slides[4].ref}/> 
         </group>
     </>
 }
