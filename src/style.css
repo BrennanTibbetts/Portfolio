@@ -54,10 +54,10 @@ div#links{
     position: absolute;
     transform-origin: 50% 50%;
     bottom: 0%;
-    left: 40%;
+    left: 42.5%;
     border: none;
-    height: 20%;
-    width: 20%;
+    height: 15%;
+    width: 15%;
     filter: brightness(0) invert(1);
     transition: 1s;
     rotate: -90deg;
@@ -75,24 +75,24 @@ div#links{
 
 .next img {
     position: absolute;
-    right: 0;
+    right: 20%;
     transform-origin: 50% 50%;
     bottom: 0%;
     border: none;
-    height: 20%;
-    width: 20%;
+    height: 15%;
+    width: 15%;
     filter: brightness(0) invert(1);
     transition: 0.5s;
 }
 
 .previous img {
     position: absolute;
-    left: 0;
+    left: 20%;
     bottom: 0%;
     transform-origin: 50% 50%;
     border: none;
-    height: 20%;
-    width: 20%;
+    height: 15%;
+    width: 15%;
     filter: brightness(0) invert(1);
     transition: 0.5s;
     rotate: 180deg;
