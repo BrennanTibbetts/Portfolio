@@ -171,30 +171,34 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>
                     <div className='left'>
-                        <img src="/css/netjets.png" />
-                        <h3>
-                            This internship profoundly impacted my professional growth and skill development.
-                            Spearheading the development of an application expanded my technical
-                            expertise, while collaboration within a Scrum team enhanced my teamwork and project management
-                            abilities.</h3>
+                        <img id="netjetsimg" src="/css/NetJets_logo.svg.png" />
+
                         <img src="/css/tail.gif" />
                     </div>
                     <div className='right'>
-                        <h1>Netjets Tail Sorting System Fullstack Internship</h1>
-                        <h2>Technologies: </h2>
+                        <div className='projectNum'>PROJECT 01</div>
+                        <h1>Netjets Internship</h1>
+                        <h2>Private Jet Tail Sorting Fullstack Project - 2023</h2>
+                        <h2>React, Node.js, GraphQL, OAuth 2.0</h2>
+                        <h3>Experience:</h3>
                         <ul>
-                            <li>React.js</li>
-                            <li>OAuth 2.0</li>
-                            <li>Node.js</li>
-                            <li>Express.js</li>
-                            <li>GraphQL</li>
+                            <li>Developed a Web Application using React, now used frequently within NetJets.</li>
+                            <li>Managed backend data retrieval and organization for vast datasets.</li>
+                            <li>Collaborated in an experienced Scrum team with daily accountability.</li>
+                            <li>Engaged in career workshops, personality assessments,
+                                and received invaluable one-on-one
+                                mentorship from company leaders.</li>
                         </ul>
-                        <h2>Developed a Single-Page-Web-App using React.js, now used frequently within the company.</h2>
-                        <h2>Managed backend data retrieval and organization for vast datasets.</h2>
-                        <h2>Collaborated in an experienced Scrum team with daily accountability.</h2>
-                        <h2>Engaged in career workshops, personality assessments,
-                            and received invaluable one-on-one
-                            mentorship from company leaders.</h2>
+                        <h3>Details:</h3>
+                        <ul>
+                            <li>Application provides a sorting interface to help manage hundreds of aircraft.</li>
+                            <li>Created to replace an outdated version of the tool as NetJets moves to web technologies.</li>
+                            <li>
+                            This internship profoundly impacted my professional growth and skill development.
+                            Spearheading the development of an application expanded my technical
+                            expertise, while collaboration within a Scrum team enhanced my teamwork and project management
+                            abilities.</li>
+                        </ul>
                     </div>
                 </div>
             </Html>

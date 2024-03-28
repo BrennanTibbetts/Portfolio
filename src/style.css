@@ -9,6 +9,11 @@ body,
     height: 100%;
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/drei/Montserrat.ttf');
+}
+
 body
 {
     font-family: 'Montserrat', sans-serif;
@@ -127,25 +132,39 @@ div.slide {
 
 div.glass {
     display: flex;
-    padding: 20px;
     gap: 50px;
     overflow: auto;
     flex-direction: row;
-    /* flex-wrap: wrap; */
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 div.left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     gap: 20px;
-    width: 33%;
-    flex-grow: 1;
+    width: 40%;
+    padding: 1%;
+}
+
+.left * {
+    width: 100%;
 }
 
 div.left img{
-    border-radius: 16px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#netjetsimg {
+    padding-top: 5%;
+}
+
+#spotifyimg {
+    padding-top: 5%;
+    height: 30%;
+    width: fit-content;
 }
 
 @media (max-width: 800px) {
@@ -155,7 +174,11 @@ div.left img{
         flex-wrap: nowrap;
     }
 
-    div.git {
+    div.left{
+        width: 100%;
+    }
+
+    div.right {
         width: 100%;
     }
     
@@ -163,7 +186,7 @@ div.left img{
 
 a.github {
 
-    border-radius: 15px;
+    border-radius: 5px;
     height: 7vh;
     width: 100%;
     display: flex;
@@ -171,33 +194,79 @@ a.github {
     align-items: center;
     color: black;
     text-decoration: none;
+    transition-duration: 1s;
+}
+
+a.github:hover {
+    filter: brightness(1) invert(0.5);
 }
 
 a.github img {
     height: 70%;
-    width: auto;
-    border-radius: 15px;
+    width: fit-content;
 }
 
+hr {
+    border: 1px solid rgba(0, 0, 0, 1);
+    width: 100%;
+}
 
 div.right {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     width: 50%;
+    padding: 1%;
+}
+
+div.projectNum {
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+h1 {
+    margin: 0;
+    font-size: 4em;
+    font-weight: 700;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 2%;
+}
+
+h3 {
+    margin: 0;
+    margin-top: 2%;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+ul {
+    list-style-type: circle; 
+    padding: 0;
+    margin-left: 5%;
+}
+
+ul li {
+    margin: 0.6%;
+    padding: 0;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
+    /* width: 0px; */
 }
 
 ::-webkit-scrollbar-track {
     border-radius: 8px;
     background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.224);
+    border: 1px solid rgba(0, 0, 0, 0.224);
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.224);
+    background-color: rgba(0, 0, 0, 0.224);
 }

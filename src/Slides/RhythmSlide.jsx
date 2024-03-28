@@ -105,16 +105,20 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
                 <div className='glass' style={divStyle(transform)}>
                     <div className="left">
                         <img src="/css/rhythm.gif"/>
-                        <a className="github" href="https://github.com/BrennanTibbetts/RhythmGame" target="_blank">
-                            <img src="/css/github.png"/>
-                            Check Out the Source Code
-                        </a> 
+                        <div>
+                            <hr/>
+                            <a className="github" href="https://github.com/BrennanTibbetts/RhythmGame" target="_blank">
+                                <img src="/css/github.png"/>
+                                Check Out the Source Code
+                            </a> 
+                        </div>
                     </div>
                     <div className='right'>
+                        <div className='projectNum'>PROJECT 04</div>
                         <h1>Rhythm</h1>
-                        <h1>A Rhythm-Based Music Game With MP3 to Track Conversion</h1>
+                        <h2>A Rhythm-Based Music Game With MP3 to Track Conversion</h2>
                         <h2>FX Shaders, C#, .NET, MonoGame, XNAFramework, Photoshop</h2>
-                        <h2>Features: </h2>
+                        <h3>Features: </h3>
                         <ul>
                             <li>Bloom Shader</li>
                             <li>Audio Latency System</li>
@@ -123,7 +127,7 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
                             <li>Game State Management</li>
                             <li>Score Management</li>
                         </ul>
-                        <h2>Details:</h2>
+                        <h3>Details:</h3>
                         <ul>
                             <li>Converts MP3 files to playable tracks, by mapping sounds to different note types.</li>
                             <li>Created as a final project for a game development course at Ohio State University</li>

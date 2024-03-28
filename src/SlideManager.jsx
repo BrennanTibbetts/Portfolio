@@ -82,8 +82,8 @@ export default function SlideManager() {
             ref: useRef(),
             background: {
                 r: 255 / 255,
-                g: 40 / 255,
-                b: 40 / 255 
+                g: 30 / 255,
+                b: 30 / 255 
             }
         },
         {

@@ -114,8 +114,23 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
                 </mesh>
             </Float>
             <Html ref={divRef} position={[0, 0, 0]}>
-                <div style={divStyle(transform)}>
-                    This Project Is Still In Development
+                <div className='glass' style={divStyle(transform)}>
+                    <div className='left'>
+                        <img id="spotifyimg" src="/css/spotify.svg" />
+                        <div>
+                            <hr/>
+                            <a className="github" href="https://github.com/BrennanTibbetts" target="_blank">
+                                <img src="/css/github.png"/>
+                                Check Out the Source Code
+                            </a> 
+                        </div>
+                    </div>
+                    <div className='right'>
+                        <div className='projectNum'>PROJECT 02</div>
+                        <h1>Spotifriend</h1>
+                        <h2>Playlist Curator - 2024</h2>
+                        <h2>React, Node.js, React-Three-Fiber, Three.js, ElasticSearch</h2>
+                    </div>
                 </div>
             </Html>
         </group>

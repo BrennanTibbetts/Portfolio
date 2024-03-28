@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import MarioShaderMaterial from './MarioShaderMaterial'
 import divStyle from './divStyle'
+import { Mesh } from 'three'
 
 
 export default function MarioSlide({position, rotation, scale, groupRef}) {
@@ -98,22 +99,32 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
             </Text>
             <mesh ref={sphereRef} position={sphereControls.position} scale={sphereControls.scale}>
                 <primitive object={mushroomGeometry} />
-                <MarioShaderMaterial/>
+                {/* <MarioShaderMaterial/> */}
+                <meshPhysicalMaterial 
+                    color='red'
+                    roughness={0.24}
+                    metalness={0.15}
+                    ior={1.07}
+                />
             </mesh>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className="glass" style={divStyle(transform)}>
                     <div className="left">
                         <img src="/css/mario.gif"/>
-                        <a className="github" href="https://github.com/BrennanTibbetts/MarioRemake" target="_blank">
-                            <img src="/css/github.png"/>
-                            Check Out the Source Code
-                        </a> 
+                        <div>
+                            <hr/>
+                            <a className="github" href="https://github.com/BrennanTibbetts/MarioRemake" target="_blank">
+                                <img src="/css/github.png"/>
+                                Check Out the Source Code
+                            </a> 
+                        </div>
                     </div>
                     <div className='right'>
+                        <div className='projectNum'>PROJECT 03</div>
                         <h1>Mario Remake</h1>
-                        <h1>Recreated the first level of the original Super Mario Bros. (1985)</h1>
+                        <h2>Recreated the first level of the original Super Mario Bros. (1985)</h2>
                         <h2>C#, .NET, MonoGame, XNAFramework, Photoshop</h2>
-                        <h2>Features: </h2>
+                        <h3>Features: </h3>
                         <ul>
                             <li>Collision Detection Algorithms</li>
                             <li>Game Physics</li>
@@ -122,7 +133,7 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
                             <li>Sound Effects</li>
                             <li>Game State Management</li>
                         </ul>
-                        <h2>Details:</h2>
+                        <h3>Details:</h3>
                         <ul>
                             <li>Collaborated in a team of 4 over a 10-week period.</li>
                             <li>Simulated industry workflow with Agile Methodologies.</li>

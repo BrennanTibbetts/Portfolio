@@ -14,7 +14,7 @@ export default function divStyle(transform) {
         backdropFilter: 'blur(5px)',
         WebkitBackdropFilter: 'blur(5px)',
         border: '1px solid rgba(255, 255, 255, 0.3)',
-        padding: '2em',
+        padding: '1em',
         transition: '0.5s',
         transitionDelay: '1s',
         color: 'rbga(28, 28, 28, 1.0)',
