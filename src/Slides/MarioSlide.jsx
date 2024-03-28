@@ -46,7 +46,7 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
 
     const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -185%)'
+   let transform = entered ? 'translate(-50%, -55%)' : 'translate(-50%, -185%)'
     useEffect(() => {
         const Enter = () => {
             gsap.to(sphereRef.current.scale, { x: 5, y: 5, z: 1, duration: 2, ease: 'elastic.inOut' });

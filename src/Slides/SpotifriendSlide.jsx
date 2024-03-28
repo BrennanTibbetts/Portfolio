@@ -49,7 +49,7 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
 
    const [entered, setEntered] = useState(false);
 
-   let transform = entered ? 'translate(-50%, -60%)' : 'translate(-50%, -180%)'
+   let transform = entered ? 'translate(-50%, -55%)' : 'translate(-50%, -185%)'
     useEffect(() => {
         const Enter = () => {
             gsap.to(sphereRef.current.scale, { x: 3, y: 3, z: 1, duration: 2, ease: 'elastic.inOut' });
