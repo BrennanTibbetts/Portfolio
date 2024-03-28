@@ -170,7 +170,16 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>
-                    <div className='content'>
+                    <div className='left'>
+                        <img src="/css/netjets.png" />
+                        <h3>
+                            This internship profoundly impacted my professional growth and skill development.
+                            Spearheading the development of an application expanded my technical
+                            expertise, while collaboration within a Scrum team enhanced my teamwork and project management
+                            abilities.</h3>
+                        <img src="/css/tail.gif" />
+                    </div>
+                    <div className='right'>
                         <h1>Netjets Tail Sorting System Fullstack Internship</h1>
                         <h2>Technologies: </h2>
                         <ul>
@@ -186,15 +195,6 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
                         <h2>Engaged in career workshops, personality assessments,
                             and received invaluable one-on-one
                             mentorship from company leaders.</h2>
-                    </div>
-                    <div className='git'>
-                        <img src="/css/netjets.png" />
-                        <h3>
-                            This internship profoundly impacted my professional growth and skill development.
-                            Spearheading the development of an application expanded my technical
-                            expertise, while collaboration within a Scrum team enhanced my teamwork and project management
-                            abilities.</h3>
-                        <img src="/css/tail.gif" />
                     </div>
                 </div>
             </Html>

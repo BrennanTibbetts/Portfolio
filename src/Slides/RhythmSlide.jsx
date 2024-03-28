@@ -103,14 +103,14 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>
-                    <div className="git">
+                    <div className="left">
                         <img src="/css/rhythm.gif"/>
                         <a className="github" href="https://github.com/BrennanTibbetts/RhythmGame" target="_blank">
                             <img src="/css/github.png"/>
                             Check Out the Source Code
                         </a> 
                     </div>
-                    <div className='content'>
+                    <div className='right'>
                         <h1>Rhythm</h1>
                         <h1>A Rhythm-Based Music Game With MP3 to Track Conversion</h1>
                         <h2>FX Shaders, C#, .NET, MonoGame, XNAFramework, Photoshop</h2>

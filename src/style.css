@@ -11,7 +11,7 @@ body,
 
 body
 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -135,17 +135,17 @@ div.glass {
     justify-content: space-between;
 }
 
-div.git {
+div.left {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
-    width: 30%;
+    width: 33%;
     flex-grow: 1;
 }
 
-div.git img{
+div.left img{
     border-radius: 16px;
-    width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -161,16 +161,16 @@ div.git img{
     
 }
 
-
 a.github {
 
     border-radius: 15px;
-    background-color: white;
     height: 7vh;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    color: black;
+    text-decoration: none;
 }
 
 a.github img {
@@ -179,9 +179,12 @@ a.github img {
     border-radius: 15px;
 }
 
-div.content {
+
+div.right {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    width: 50%;
 }
 
 ::-webkit-scrollbar {

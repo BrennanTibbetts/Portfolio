@@ -102,14 +102,14 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
             </mesh>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className="glass" style={divStyle(transform)}>
-                    <div className="git">
+                    <div className="left">
                         <img src="/css/mario.gif"/>
                         <a className="github" href="https://github.com/BrennanTibbetts/MarioRemake" target="_blank">
                             <img src="/css/github.png"/>
                             Check Out the Source Code
                         </a> 
                     </div>
-                    <div className='content'>
+                    <div className='right'>
                         <h1>Mario Remake</h1>
                         <h1>Recreated the first level of the original Super Mario Bros. (1985)</h1>
                         <h2>C#, .NET, MonoGame, XNAFramework, Photoshop</h2>
