@@ -1,12 +1,13 @@
 import { useControls } from 'leva'
-import { Text, Float, Html } from '@react-three/drei'
+import { Text, Float, Html, Loader } from '@react-three/drei'
 import gsap from 'gsap'
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import divStyle from './divStyle'
 import AboutMeShaderMaterial from './AboutMeShaderMaterial'
+import LoadingScreen from '../LoadingScreen'
 
 export default function AboutMeSlide({position, rotation, scale, groupRef}) {
 
@@ -64,6 +65,8 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
 
    const [entered, setEntered] = useState(false);
 
+   let handVisible = window.innerWidth > 800 ? true : false 
+
    let transform = entered ? 'translate(-50%, -55%)' : 'translate(-50%, -185%)'
     useEffect(() => {
 
@@ -102,7 +105,38 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
         const button = document.querySelector('.entry');
         button.addEventListener('click', toggleEntry);
 
-        // Cleanup function to remove event listener
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                } 
+            }
+            if (e.key === 'ArrowDown') {
+                if (entered) {
+                    Exit();
+                    button.classList.remove('entered');
+                    setEntered(false);
+                }
+            }
+        })
+
+        window.addEventListener('click', (e) => {
+
+            // check if mouse is near center and not entered
+            const boxSize = 200
+            if (e.clientX > window.innerWidth / 2 - boxSize && e.clientX < window.innerWidth / 2 + boxSize && e.clientY > window.innerHeight / 2 - boxSize && e.clientY < window.innerHeight / 2 + boxSize) {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                    console.log('entered')
+                }
+            }
+            e.stopPropagation()
+        })
+
         return () => button.removeEventListener('click', toggleEntry);
 
     }, [entered]);
@@ -122,7 +156,7 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
                 <primitive object={manGeometry}/>
                 <AboutMeShaderMaterial />
             </mesh>
-            <mesh ref={armRef} position={armControls.position} scale={armControls.scale}>
+            <mesh ref={armRef} position={armControls.position} scale={armControls.scale} visible={handVisible}>
                 <primitive object={armGeometry}/>
                 <AboutMeShaderMaterial />
             </mesh>
@@ -152,7 +186,21 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
             </Text>
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>
-                    <h1>Hi, My name is Brennan Tibbetts</h1>
+                    <div className='aboutme'>
+                        <h1>Welcome!</h1>
+                        <hr/>
+                        <div>
+                            <h2>I'm Brennan, a Fullstack Developer and 3D designer.</h2>
+                            <h2>I love creating interactive digital experiences for  people to enjoy.</h2>
+                            <h2>Check out some of my projects using the navigation below!</h2>
+                            <h3>For collaboration inquiries, please contact me through email or Upwork.</h3>
+                        </div>
+                        <hr/>
+                        <a className="github" href="https://github.com/BrennanTibbetts/Portfolio" target="_blank">
+                            <img src="/css/github.png"/>
+                            Learn About This Portfolio
+                        </a> 
+                    </div>
                 </div>
             </Html>
         </group>

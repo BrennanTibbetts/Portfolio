@@ -43,7 +43,7 @@ export default function Experience()
         {performance ? <Perf position='top-left'/> : null}
 
         <Environment 
-            files={'/drei/sky.hdr'}
+            preset='city'
         />
         <directionalLight
             castShadow

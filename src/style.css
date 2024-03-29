@@ -135,7 +135,6 @@ div.glass {
     gap: 50px;
     overflow: auto;
     flex-direction: row;
-    flex-wrap: wrap;
 }
 
 div.left {
@@ -167,11 +166,12 @@ div.left img{
     width: fit-content;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     div.glass {
         flex-direction: column;
         justify-content: flex-start;
         flex-wrap: nowrap;
+        overflow-x: hidden;
     }
 
     div.left{
@@ -179,7 +179,7 @@ div.left img{
     }
 
     div.right {
-        width: 100%;
+        width: 100% !important;
     }
     
 }
@@ -194,7 +194,7 @@ a.github {
     align-items: center;
     color: black;
     text-decoration: none;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }
 
 a.github:hover {
@@ -203,7 +203,7 @@ a.github:hover {
 
 a.github img {
     height: 70%;
-    width: fit-content;
+    width: auto;
 }
 
 hr {
@@ -226,13 +226,13 @@ div.projectNum {
 
 h1 {
     margin: 0;
-    font-size: 4em;
+    font-size: min(4em, 10vw);
     font-weight: 700;
 }
 
 h2 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: min(1.5em, 4vw);
     font-weight: 400;
     margin-bottom: 2%;
 }
@@ -240,7 +240,7 @@ h2 {
 h3 {
     margin: 0;
     margin-top: 2%;
-    font-size: 1.2em;
+    font-size: min(1.2em, 3vw);
     font-weight: 700;
 }
 
@@ -269,4 +269,40 @@ ul li {
 ::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.224);
+}
+
+div.aboutme {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+div.aboutme div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+div.aboutme hr {
+    width: 80%;
+}
+
+div.aboutme h1 {
+    font-size: min(4em, 10vw);
+    font-weight: 600;
+}
+
+div.aboutme h2 {
+    font-size: min(2em, 5vw);
+    font-weight: 400;
+}
+
+div.aboutme a.github {
+    width: 80%;
 }

@@ -1,6 +1,5 @@
 import { useControls } from 'leva'
 import { Text, Float, Html } from '@react-three/drei'
-import { extend } from '@react-three/fiber'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import { useLoader } from '@react-three/fiber'
@@ -74,6 +73,38 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
 
         const button = document.querySelector('.entry');
         button.addEventListener('click', toggleEntry);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                } 
+            }
+            if (e.key === 'ArrowDown') {
+                if (entered) {
+                    Exit();
+                    button.classList.remove('entered');
+                    setEntered(false);
+                }
+            }
+        })
+
+        window.addEventListener('click', (e) => {
+
+            // check if mouse is near center and not entered
+            const boxSize = 200
+            if (e.clientX > window.innerWidth / 2 - boxSize && e.clientX < window.innerWidth / 2 + boxSize && e.clientY > window.innerHeight / 2 - boxSize && e.clientY < window.innerHeight / 2 + boxSize) {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                    console.log('entered')
+                }
+            }
+            e.stopPropagation()
+        })
 
         return () => button.removeEventListener('click', toggleEntry);
 

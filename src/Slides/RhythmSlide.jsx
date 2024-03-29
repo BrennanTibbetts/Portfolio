@@ -1,17 +1,14 @@
 import { useControls } from 'leva'
-import { Text, Float, Html } from '@react-three/drei'
-import { extend } from '@react-three/fiber'
+import { Text, Html, Preload } from '@react-three/drei'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
-import { useLoader } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import WobbleShaderMaterial from './RhythmShaderMaterial'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import divStyle from './divStyle'
+import RhythmShaderMaterial from './RhythmShaderMaterial'
 
 export default function RhythmSlide({position, rotation, scale, groupRef}) {
 
-    const sphereControls = useControls('Spotifriend Sphere', {
+    const sphereControls = useControls('Rhythm Sphere', {
             position: {
                 value: [0, 0, -1],
                 step: 0.1
@@ -25,7 +22,7 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
                 step: 0.1
             },
             detail: {
-                value: 40,
+                value: 20,
                 min: 0,
                 max: 500,
                 step: 1
@@ -39,7 +36,6 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
     })
     
     const sphereRef = useRef()
-
 
     const textRef = useRef()
     const divRef = useRef()
@@ -72,6 +68,38 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
         const button = document.querySelector('.entry');
         button.addEventListener('click', toggleEntry);
 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                } 
+            }
+            if (e.key === 'ArrowDown') {
+                if (entered) {
+                    Exit();
+                    button.classList.remove('entered');
+                    setEntered(false);
+                }
+            }
+        })
+
+        window.addEventListener('click', (e) => {
+
+            // check if mouse is near center and not entered
+            const boxSize = 200
+            if (e.clientX > window.innerWidth / 2 - boxSize && e.clientX < window.innerWidth / 2 + boxSize && e.clientY > window.innerHeight / 2 - boxSize && e.clientY < window.innerHeight / 2 + boxSize) {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                    console.log('entered')
+                }
+            }
+            e.stopPropagation()
+        })
+
         // Cleanup function to remove event listener
         return () => button.removeEventListener('click', toggleEntry);
 
@@ -90,7 +118,7 @@ export default function RhythmSlide({position, rotation, scale, groupRef}) {
                 <icosahedronGeometry 
                     args={[sphereControls.radius, sphereControls.detail]}
                 />
-                <WobbleShaderMaterial/>
+                <RhythmShaderMaterial/>
             </mesh>
             <Text 
                 font='./drei/rhythm.otf'

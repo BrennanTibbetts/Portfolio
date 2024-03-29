@@ -1,40 +1,40 @@
 import CustomShaderMaterial from 'three-custom-shader-material'
 import CustomShaderMaterialImpl from 'three-custom-shader-material/vanilla'
 import { useControls } from 'leva'
-import { useState, useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import * as THREE from 'three'
 import wobbleVertexShader from '../shaders/wobble/vertex.glsl'
 import wobbleFragmentShader from '../shaders/wobble/rhythmFragment.glsl'
 import { useFrame } from '@react-three/fiber'
 
 export default function WobbleShaderMaterial() {
-  const wobbleControls = useControls('Wobble Rhytm', {
+  const wobbleControls = useControls('Wobble Rhythm', {
     positionFrequency: {
-      value: 1.0,
+      value: 1,
       min: 0,
       max: 1,
       step: 0.01,
     },
     timeFrequency: {
-      value: 0.9,
+      value: 0.8,
       min: 0,
       max: 1,
       step: 0.01,
     },
     strength: {
-      value: 0.8,
+      value: 0.66,
       min: 0,
       max: 2,
       step: 0.01,
     },
     warpPositionFrequency: {
-      value: 1.0,
+      value: 0.0,
       min: 0,
       max: 2,
       step: 0.01,
     },
     warpTimeFrequency: {
-      value: 0.24,
+      value: 0.0,
       min: 0,
       max: 1,
       step: 0.01,
@@ -54,26 +54,14 @@ export default function WobbleShaderMaterial() {
   })
 
   const materialControls = useControls('Material Rhythm', {
-    metalness: {
-      value: 0.3,
-      min: 0,
-      max: 1,
-      step: 0.01,
-    },
-    roughness: {
-      value: 0.1,
-      min: 0,
-      max: 1,
-      step: 0.01,
-    },
     transmission: {
-      value: 0.2,
+      value: 0,
       min: 0,
       max: 1,
       step: 0.01,
     },
     ior: {
-      value: 0.94,
+      value: 1.0,
       min: 0,
       max: 3,
       step: 0.01,
@@ -85,7 +73,7 @@ export default function WobbleShaderMaterial() {
       step: 0.01,
     },
     transparent: {
-      value: false,
+      value: true,
     },
     wireframe: {
       value: false,
@@ -131,8 +119,6 @@ export default function WobbleShaderMaterial() {
           uniforms={uniforms}
           silent
 
-          metalness={materialControls.metalness}
-          roughness={materialControls.roughness}
           transmission={materialControls.transmission}
           ior={materialControls.ior}
           thickness={materialControls.thickness}

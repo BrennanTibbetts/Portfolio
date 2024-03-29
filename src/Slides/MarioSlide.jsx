@@ -1,11 +1,10 @@
 import { useControls } from 'leva'
-import { Text, Float, useGLTF, Html } from '@react-three/drei'
+import { Text, useGLTF, Html, MeshWobbleMaterial, PointMaterial } from '@react-three/drei'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
-import MarioShaderMaterial from './MarioShaderMaterial'
 import divStyle from './divStyle'
-import { Mesh } from 'three'
+import { MeshTransmissionMaterial, MeshDistortMaterial } from '@react-three/drei'
 
 
 export default function MarioSlide({position, rotation, scale, groupRef}) {
@@ -73,6 +72,38 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
         const button = document.querySelector('.entry');
         button.addEventListener('click', toggleEntry);
 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                } 
+            }
+            if (e.key === 'ArrowDown') {
+                if (entered) {
+                    Exit();
+                    button.classList.remove('entered');
+                    setEntered(false);
+                }
+            }
+        })
+
+        window.addEventListener('click', (e) => {
+
+            // check if mouse is near center and not entered
+            const boxSize = 200
+            if (e.clientX > window.innerWidth / 2 - boxSize && e.clientX < window.innerWidth / 2 + boxSize && e.clientY > window.innerHeight / 2 - boxSize && e.clientY < window.innerHeight / 2 + boxSize) {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                    console.log('entered')
+                }
+            }
+            e.stopPropagation()
+        })
+
         // Cleanup function to remove event listener
         return () => button.removeEventListener('click', toggleEntry);
 
@@ -81,25 +112,21 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
     useEffect(() => {
         sphereRef.current.geometry = mergeVertices(sphereRef.current.geometry)
         sphereRef.current.geometry.computeTangents()
-
     }, [])
 
     return <>
-        <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
+        <group ref={groupRef} position={position} rotation={rotation} scale={scale} visible={false}>
             <Text 
                 font='./drei/SuperMario256.ttf'
                 ref={textRef}
                 position={textControls.position}
                 scale={0.4}
                 letterSpacing={0.3}
-
-                // curveRadius={2}
             >
                 MARIO
             </Text>
             <mesh ref={sphereRef} position={sphereControls.position} scale={sphereControls.scale}>
                 <primitive object={mushroomGeometry} />
-                {/* <MarioShaderMaterial/> */}
                 <meshPhysicalMaterial 
                     color='red'
                     roughness={0.24}

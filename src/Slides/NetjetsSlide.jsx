@@ -6,7 +6,6 @@ import { useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import NetjetsShaderMaterial from './NetjetsShaderMaterial'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
-import TextShaderMaterial from '../TextShader'
 import divStyle from './divStyle'
 
 export default function NetjetsSlide({position, rotation, scale, groupRef}) {
@@ -131,6 +130,38 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
         const button = document.querySelector('.entry');
         button.addEventListener('click', toggleEntry);
 
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                } 
+            }
+            if (e.key === 'ArrowDown') {
+                if (entered) {
+                    Exit();
+                    button.classList.remove('entered');
+                    setEntered(false);
+                }
+            }
+        })
+
+        window.addEventListener('click', (e) => {
+
+            // check if mouse is near center and not entered
+            const boxSize = 200
+            if (e.clientX > window.innerWidth / 2 - boxSize && e.clientX < window.innerWidth / 2 + boxSize && e.clientY > window.innerHeight / 2 - boxSize && e.clientY < window.innerHeight / 2 + boxSize) {
+                if (!entered) {
+                    Enter();
+                    button.classList.add('entered');
+                    setEntered(true);
+                    console.log('entered')
+                }
+            }
+            e.stopPropagation()
+        })
+
         // Cleanup function to remove event listener
         return () => button.removeEventListener('click', toggleEntry);
 
@@ -172,7 +203,6 @@ export default function NetjetsSlide({position, rotation, scale, groupRef}) {
                 <div className='glass' style={divStyle(transform)}>
                     <div className='left'>
                         <img id="netjetsimg" src="/css/NetJets_logo.svg.png" />
-
                         <img src="/css/tail.gif" />
                     </div>
                     <div className='right'>

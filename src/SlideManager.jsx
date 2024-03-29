@@ -4,10 +4,10 @@ import SpotifriendSlide from "./Slides/SpotifriendSlide";
 import MarioSlide from "./Slides/MarioSlide";
 import RhythmSlide from "./Slides/RhythmSlide";
 import AboutMeSlide from "./Slides/AboutMeSlide";
-import React, { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
-import * as THREE from 'three'
+import { Preload } from "@react-three/drei";
 
 export default function SlideManager() {
 
@@ -15,6 +15,8 @@ export default function SlideManager() {
 
     let cooldown = false
 
+
+    let index = currentSlide
     const slide = (direction) => {
 
         if(circleRef.current) {
@@ -32,8 +34,10 @@ export default function SlideManager() {
             })
 
 
-            let index = (currentSlide + direction) % slides.length
+            index = (currentSlide + direction) % slides.length
             if(index == -1) index = slides.length - 1
+
+            slides[index].ref.current.visible = true 
 
             gsap.to(backgroundRef.current, {
                 r: slides[index].background.r,
@@ -106,16 +110,27 @@ export default function SlideManager() {
     //START IN CIRCLE
     useEffect(() => {
 
+        const offset = 2 - window.innerWidth / window.innerHeight
+
+        let radius = 6 + offset 
+
+
         camera.position.set(0, 0, 0)
         camera.lookAt(1, 0, 0)
 
         slides.forEach((slide, index) => {
-            slide.ref.current.position.x = Math.cos(((index / slides.length) * Math.PI * 2)) * 6
-            slide.ref.current.position.z = Math.sin((index / slides.length) * Math.PI * 2) * 6
+
+            slide.ref.current.position.x = Math.cos(((index / slides.length) * Math.PI * 2)) * radius 
+            slide.ref.current.position.z = Math.sin((index / slides.length) * Math.PI * 2) * radius
 
             slide.ref.current.lookAt(0, 0, 0)
+
+            slide.ref.current.visible = false
         })
-    }, [])
+
+        slides[currentSlide].ref.current.visible = true
+
+    }, [window.innerWidth])
 
     useEffect(() => {
 
@@ -125,6 +140,10 @@ export default function SlideManager() {
         const leftButton = document.querySelector('.previous')
         leftButton.addEventListener('click', () => slide(-1))
 
+        window.addEventListener('keydown', (e) => {
+            if(e.key == 'ArrowRight') slide(1)
+            if(e.key == 'ArrowLeft') slide(-1)
+        })
 
         return () => {
             rightButton.removeEventListener('click', () => slide(1))
@@ -146,6 +165,7 @@ export default function SlideManager() {
             <SpotifriendSlide groupRef={slides[2].ref}/> 
             <MarioSlide groupRef={slides[3].ref} />
             <RhythmSlide groupRef={slides[4].ref}/> 
+            <Preload all/>
         </group>
     </>
 }
