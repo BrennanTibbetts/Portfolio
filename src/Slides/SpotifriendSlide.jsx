@@ -147,8 +147,20 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
             <Html ref={divRef} position={[0, 0, 0]}>
                 <div className='glass' style={divStyle(transform)}>
                     <div className='left'>
-                        <img id="spotifyimg" src="/css/spotify.svg" />
+                        <div className='frameReplacement'>
+                            <iframe src='https://spotifriend.vercel.app/' ></iframe>
+                        </div>
+                        <p>
+                            Spotifriend is a playlist curator that uses Spotify's API
+                             and ElasticSearch to create playlists based on your favorite
+                              artists and genres. It features a unique UI and the ability to
+                              add generated playlists to your Spotify account.
+                        </p>
                         <div>
+                            <a className="github" href="https://spotifriend.vercel.app/" target="_blank">
+                                <img src="/css/spotify.svg"/>
+                                Check Out the Website 
+                            </a> 
                             <hr/>
                             <a className="github" href="https://github.com/BrennanTibbetts" target="_blank">
                                 <img src="/css/github.png"/>
@@ -160,7 +172,20 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
                         <div className='projectNum'>PROJECT 02</div>
                         <h1>Spotifriend</h1>
                         <h2>Playlist Curator - 2024</h2>
-                        <h2>React, Node.js, React-Three-Fiber, Three.js, ElasticSearch</h2>
+                        <h2>React, Node.js, React-Three-Fiber, SQL, ElasticSearch</h2>
+                        <h3>Features: </h3>
+                        <ul>
+                            <li>ElasticSearch Playlist Generation</li>
+                            <li>Spotify Account Integration and Playlist Addition</li>
+                            <li>Over 35k Artists to Choose From</li>
+                            <li>Playlists are Represented By a Uniquely Generated Sphere</li>
+                            <li>Generated Playlist Data Translated to Parameters for the 3D Object</li>
+                        </ul>
+                        <h3>Details:</h3>
+                        <ul>
+                            <li>Created as a Capstone Project at Ohio State University</li>
+                            <li>Collaborated in a Team of 6 Talented Students</li>
+                        </ul>
                     </div>
                 </div>
             </Html>

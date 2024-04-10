@@ -1,17 +1,15 @@
 import { useControls } from 'leva'
-import { Text, Float, Html, Loader } from '@react-three/drei'
+import { Text, Float, Html, Loader, useGLTF } from '@react-three/drei'
 import gsap from 'gsap'
 import { Suspense, useEffect, useRef, useState } from 'react'
-import { useLoader} from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import divStyle from './divStyle'
 import AboutMeShaderMaterial from './AboutMeShaderMaterial'
-import LoadingScreen from '../LoadingScreen'
 
 export default function AboutMeSlide({position, rotation, scale, groupRef}) {
 
-    const manScene = useLoader(GLTFLoader, 'models/man.glb').scene
+    // const manScene = useLoader(GLTFLoader, 'models/man.glb').scene
+    const manScene = useGLTF('models/man.glb').scene
 
     const manGeometry = manScene.children[0].geometry
     const armGeometry = manScene.children[1].geometry
@@ -192,7 +190,7 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
                         <div>
                             <h2>I'm Brennan, a Fullstack Developer and 3D designer.</h2>
                             <h2>I love creating interactive digital experiences for  people to enjoy.</h2>
-                            <h2>Check out some of my projects using the navigation below!</h2>
+                            <h2>Check out some of my projects using the arrows below!</h2>
                             <h3>For collaboration inquiries, please contact me through email or Upwork.</h3>
                         </div>
                         <hr/>
@@ -206,3 +204,5 @@ export default function AboutMeSlide({position, rotation, scale, groupRef}) {
         </group>
     </>
 }
+
+useGLTF.preload('/models/man.glb')

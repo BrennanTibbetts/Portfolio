@@ -174,3 +174,5 @@ export default function MarioSlide({position, rotation, scale, groupRef}) {
         </group>
     </>
 }
+
+useGLTF.preload('models/mario.glb')
