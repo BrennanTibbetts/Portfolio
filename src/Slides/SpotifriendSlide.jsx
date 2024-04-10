@@ -1,16 +1,14 @@
 import { useControls } from 'leva'
-import { Text, Float, Html } from '@react-three/drei'
+import { Text, Float, Html, useGLTF } from '@react-three/drei'
 import gsap from 'gsap'
 import { useEffect, useRef, useState } from 'react'
-import { useLoader } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import WobbleShaderMaterial from './SpotifriendShaderMaterial'
 import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils'
 import divStyle from './divStyle'
 
 export default function SpotifriendSlide({position, rotation, scale, groupRef}) {
 
-    const headsetGeometry = useLoader(GLTFLoader, 'models/untitled.glb').scene.children[0].geometry
+    const headsetGeometry = useGLTF('models/untitled.glb').scene.children[0].geometry
 
     const sphereControls = useControls('Spotifriend Sphere', {
             position: {
@@ -192,3 +190,5 @@ export default function SpotifriendSlide({position, rotation, scale, groupRef}) 
         </group>
     </>
 }
+
+useGLTF.preload('models/untitled.glb')
