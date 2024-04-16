@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/boxle/(.*)", "destination": "https://boxle.vercel.app" }
+  ]
+}
