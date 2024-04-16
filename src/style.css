@@ -37,8 +37,18 @@ div#links{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     z-index: 100;
+}
+
+a.boxle {
+    justify-self: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
 }
 
 #links a {
